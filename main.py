@@ -40,4 +40,3 @@ while True:
     if color.reflected_light_intensity < 15:
         robot.drive_time(200, 0, 2000)
     else:
-#こんにちは
