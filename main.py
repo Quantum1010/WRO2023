@@ -39,4 +39,4 @@ robot = DriveBase(left_motor, right_motor, wheel_diameter, axle_track)
 while True:
     if color.reflected_light_intensity < 15:
         robot.drive_time(200, 0, 2000)
-    else:
+    else:robot.drive_time(0, 0, 0)
