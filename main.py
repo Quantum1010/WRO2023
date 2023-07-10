@@ -6,6 +6,7 @@ from pybricks.parameters import Port, Stop, Direction, Button, Color
 from pybricks.tools import wait, StopWatch, DataLog
 from pybricks.robotics import DriveBase
 from pybricks.media.ev3dev import SoundFile, ImageFile
+import uselect
 
 
 # This program requires LEGO EV3 MicroPython v2.0 or higher.
@@ -20,7 +21,8 @@ ev3.speaker.beep()
 
 #インスタンスの作成
 touch = TouchSensor(Port.D)
-color = ColorSensor(Port.A)
+color = ColorSensor(Port.S2)
+Ultra = UltrasonicSensor(Port.S1)
 
 left_motor = Motor(Port.B)
 right_motor = Motor(Port.C)
@@ -38,7 +40,11 @@ robot.drive_time(200, 0, 2000)
 robot.drive_time(0, 90, 1000)
 
 #ライントレースのプログラム
-while True:
+while Ultra.distance_centimeters < 30 :
     if color.reflected_light_intensity <= 50 :
         robot.drive(50, 30)
     else:robot.drive(50, -30)
+
+#左においてある箱の色を確認する
+robot.drive_time(0, -90, 1000)
+if color.color == 2:
