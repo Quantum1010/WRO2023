@@ -27,7 +27,7 @@ right_motor = Motor(Port.C)
 
 #詳細
 wheel_diameter = 56
-axle_track = 123
+axle_track = 120
 
 #ここから動作
 robot = DriveBase(left_motor, right_motor, wheel_diameter, axle_track)
