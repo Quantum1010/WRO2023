@@ -35,6 +35,7 @@ robot = DriveBase(left_motor, right_motor, wheel_diameter, axle_track)
 
 #drive_timeの後の括弧はスピード(mm/s),ハンドルの角度？(deg/s),速度(ミリ秒つまり秒数×1000)
 robot.drive_time(200, 0, 2000)
+robot.drive_time(0, 90, 1000)
 
 #ライントレースのプログラム
 while True:
