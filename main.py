@@ -47,4 +47,5 @@ while Ultra.distance_centimeters < 30 :
 
 #左においてある箱の色を確認する
 robot.drive_time(0, -90, 1000)
+arm.run_angle
 if color.color == 2:
