@@ -33,22 +33,11 @@ wheel_diameter = 56
 axle_track = 120
 robot = DriveBase(left_motor, right_motor, wheel_diameter, axle_track)
 
-#drive_timeの後の括弧はスピード(mm/s),ハンドルの角度？(deg/s),速度(ミリ秒つまり秒数×1000)
-#robot.drive_time(200,0,2000)
-#robot.drive_time(0,90,1000)
-
-#ライントレースのプログラム
-while touch.is_pressed :
-    if color.reflected_light_intensity <= 50 :
-        robot.drive(50,30)
-    else:robot.drive(50,-30)
-
-#白ブロックに向かおう！
-robot.drive_time(0,180,1000)
-while
-if color.reflected_light_intensity <= 50 :
-    robot.drive(50,30)
-else:robot.drive(50,-30)
-wait(200000)
-
-while if ultra.distance_centimeters
+#左においてある箱の色を確認する
+robot.drive_time(0,-90,1000)
+robot.drive_time(100,0,1000)
+arm.on_for_degrees(50,90)
+if color.color == 3:
+    iro = 3
+else:
+    iro = 2
