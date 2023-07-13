@@ -33,7 +33,7 @@ wheel_diameter = 56
 axle_track = 120
 robot = DriveBase(left_motor, right_motor, wheel_diameter, axle_track)
 
-#左においてある箱の色を確認する
+#箱の色確認
 robot.drive_time(0,-90,1000)
 robot.drive_time(100,0,1000)
 arm.on_for_degrees(50,90)
@@ -41,3 +41,9 @@ if color.color == 3:
     iro = 3
 else:
     iro = 2
+
+#超音波センサーを使ったやつ
+while ultra.distance_centimeters < 100:
+    if color.reflected_light_intensity <= 50:
+        robot.drive(50,30)
+    else:robot.drive(50,-30)

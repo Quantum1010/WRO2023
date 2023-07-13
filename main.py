@@ -50,7 +50,3 @@ for i in range(30):
         robot.drive(50,30)
     else:robot.drive(50,-30)
 
-while ultra.distance_centimeters < 100:
-    if color.reflected_light_intensity <= 50:
-        robot.drive(50,30)
-    else:robot.drive(50,-30)
