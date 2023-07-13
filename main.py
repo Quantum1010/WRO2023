@@ -38,17 +38,22 @@ robot = DriveBase(left_motor, right_motor, wheel_diameter, axle_track)
 #robot.drive_time(0,90,1000)
 
 #ライントレースのプログラム
-while touch.is_pressed :
-    if color.reflected_light_intensity <= 50 :
-        robot.drive(50,30)
-    else:robot.drive(50,-30)
+while True:
+    if touch.is_pressed:
+        break
+    else:
+        if color.reflected_light_intensity <= 50:
+            robot.drive(50,30)
+        else:robot.drive(50,-30)
 
 #白ブロックに向かおう！
-robot.drive_time(0,180,1000)
-while
-if color.reflected_light_intensity <= 50 :
+robot.drive_time(0,90,1000)
+if color.reflected_light_intensity <= 50:
     robot.drive(50,30)
 else:robot.drive(50,-30)
 wait(200000)
 
-while if ultra.distance_centimeters
+while ultra.distance_centimeters < 100:
+    if color.reflected_light_intensity <= 50:
+        robot.drive(50,30)
+    else:robot.drive(50,-30)
