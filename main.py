@@ -20,9 +20,7 @@ ev3 = EV3Brick()
 ev3.speaker.beep()
 
 #インスタンスの作成
-touch = TouchSensor(Port.D)
 color = ColorSensor(Port.S2)
-ultra = UltrasonicSensor(Port.S1)
 
 left_motor = Motor(Port.B)
 right_motor = Motor(Port.C)
