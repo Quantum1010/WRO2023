@@ -20,17 +20,10 @@ ev3 = EV3Brick()
 ev3.speaker.beep()
 
 #インスタンスの作成
-color = ColorSensor(Port.S2)
+colorsensor = ColorSensor(Port.S4)
+color = colorsensor.color
 
-left_motor = Motor(Port.B)
-right_motor = Motor(Port.C)
-arm = Motor(Port.A)
-
-#詳細
-wheel_diameter = 56
-axle_track = 120
-robot = DriveBase(left_motor, right_motor, wheel_diameter, axle_track)
-
+#Lab値にするよー！
 def rgb_to_lab(r, g, b):
     # RGB値を範囲0-1に変換
     r /= 255.0
@@ -41,7 +34,7 @@ def rgb_to_lab(r, g, b):
     def srgb_to_linear(color):
         if color <= 0.04045:
             return color / 12.92
-        return ((color + 0.055) / 1.055)  2.4
+        return ((color + 0.055) / 1.055) ;2.4
 
     r_linear = srgb_to_linear(r)
     g_linear = srgb_to_linear(g)
@@ -59,7 +52,7 @@ def rgb_to_lab(r, g, b):
 
     def xyz_to_lab(t):
         if t > 0.008856:
-            return t  (1.0 / 3.0)
+            return t * (1.0 / 3.0)
         else:
             return (903.3 * t + 16.0) / 116.0
 
@@ -86,33 +79,37 @@ def detect_color_name(lab_values):
     red_max_b = 20
 
     # 黒色のLab値の範囲を定義
-    black_max_l = 40
-    black_max_ab = 10
+    black_max_l = 50
+    black_max_a = 20
+    black_max_b = 20
 
     # 青色のLab値の範囲を定義
     blue_min_l = 20
     blue_max_l = 80
-    blue_max_ab = 10
+    blue_max_a = 10
+    blue_max_b = 10
 
     # 緑色のLab値の範囲を定義
     green_min_l = 40
-    green_max_l = 80
-    green_max_ab = 30
+    green_max_l = 90
+    green_max_a = 30
+    green_max_b = 30
 
     # 白色のLab値の範囲を定義
     white_min_l = 80
-    white_max_ab = 10
+    white_max_a = 10
+    white_max_b = 10
 
     # 色を判定
     if red_min_l <= l <= red_max_l and red_min_a <= a <= red_max_a and red_min_b <= b <= red_max_b:
         return "赤"
-    elif l <= black_max_l and abs(a) <= black_max_ab and abs(b) <= black_max_ab:
+    elif l <= black_max_l and abs(a) <= black_max_a and abs(b) <= black_max_b:
         return "黒"
-    elif blue_min_l <= l <= blue_max_l and a <= -blue_max_ab and b >= blue_max_ab:
+    elif blue_min_l <= l <= blue_max_l and a <= -blue_max_a and b >= blue_max_b:
         return "青"
-    elif green_min_l <= l <= green_max_l and -green_max_ab <= a <= green_max_ab and -green_max_ab <= b <= green_max_ab:
+    elif green_min_l <= l <= green_max_l and -green_max_a <= a <= green_max_a and -green_max_b <= b <= green_max_b:
         return "緑"
-    elif l >= white_min_l and abs(a) <= white_max_ab and abs(b) <= white_max_ab:
+    elif l >= white_min_l and abs(a) <= white_max_a and abs(b) <= white_max_b:
         return "白"
     else:
         return "その他の色"
@@ -128,19 +125,3 @@ lab_values = rgb_to_lab(red, green, blue)
 # 色を検出して表示
 color_name = detect_color_name(lab_values)
 print("検出された色:", color_name)
-
-
-#前進
-robot.drive_time(200,0,1000)
-while True:
-    if 
-
-
-#箱の色確認
-robot.drive_time(0,-90,1000)
-robot.drive_time(100,0,1000)
-for i in range(1):
-    if color.color == 3:
-        iro = 3
-    else:
-        iro = 2
