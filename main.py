@@ -20,7 +20,7 @@ ev3 = EV3Brick()
 ev3.speaker.beep()
 
 #インスタンスの作成
-color = ColorSensor(Port.S2)
+color = ColorSensor(Port.S1)
 
 left_motor = Motor(Port.B)
 right_motor = Motor(Port.C)
@@ -36,10 +36,10 @@ robot = DriveBase(left_motor, right_motor, wheel_diameter, axle_track)
 #robot.drive_time(0,90,1000)
 
 #ライントレースのプログラム
-for i in range(20):
-    if color.reflected_light_intensity <= 50:
-        robot.drive(50,30)
-    else:robot.drive(50,-30)
+while True:
+    if color.reflection() < 4:
+        robot.drive_time(50,30,1000)
+    else:robot.drive_time(50,-30,1000)
 
 #白ブロックに向かおう！
 robot.drive_time(0,90,1000)

@@ -20,7 +20,7 @@ ev3 = EV3Brick()
 ev3.speaker.beep()
 
 #インスタンスの作成
-color = ColorSensor(Port.S2)
+color = ColorSensor(Port.S1)
 
 left_motor = Motor(Port.B)
 right_motor = Motor(Port.C)
@@ -28,7 +28,7 @@ arm = Motor(Port.A)
 
 #詳細
 wheel_diameter = 56
-axle_track = 120
+axle_track = 150
 robot = DriveBase(left_motor, right_motor, wheel_diameter, axle_track)
 
 #drive_timeの後の括弧はスピード(mm/s),ハンドルの角度？(deg/s),速度(ミリ秒つまり秒数×1000)
@@ -38,11 +38,13 @@ robot.drive_time(0,90,1000)
 robot.drive_time(106,0,10000)
 robot.drive_time(0,-90,1000)
 robot.drive_time(100,0,4600)
-arm.?
+arm.on_for_degrees(50,90)
+arm.on_for_degrees(50,-90)
 robot.drive_time(0,180,1000)
 robot.drive_time(100,0,4600)
 robot.drive_time(0,90,1000)
 robot.drive_time(106,0,10000)
 robot.drive_time(0,90,1000)
 robot.drive_time(100,0,500)
-arm.?
+arm.on_for_degrees(50,90)
+arm.on_for_degrees(50,-90)
