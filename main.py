@@ -17,7 +17,6 @@ ev3 = EV3Brick()
 
 #ここからプログラムを書き込む
 ev3.speaker.beep()
-time_sta = time.perf_counter
 
 #インスタンスの作成
 color = ColorSensor(Port.S2)
@@ -34,11 +33,18 @@ robot = DriveBase(left_motor, right_motor, wheel_diameter, axle_track)
 #drive_timeの後の括弧はスピード(mm/s),ハンドルの角度？(deg/s),速度(ミリ秒つまり秒数×1000)
 
 #ライントレースのプログラム
+if color.reflection() < 13:
+    robot.drive_time(200,5,500)
+else:robot.drive_time(200,-5,500)
 
-while True:
+for i in range(3):
     ev3.screen.print(color.reflection())
     if color.reflection() < 13:
-        robot.drive(200,5)
-    else:robot.drive(200,-5)
+        robot.drive_time(200,10,500)
+        robot.drive(200,0)
+    else:
+        robot.drive_time(200,-10,500)
+        robot.drive(200,0)
+
 
 

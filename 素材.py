@@ -45,12 +45,7 @@ while ultra.distance_centimeters < 100:
     if color_sensor.reflected_light_intensity <= 50:
         robot.drive(50,30)
     else:robot.drive(50,-30)
-
-#ライントレースのプログラム
-while True:
-    if color_sensor.reflected_light_intensity <= 4:
-        robot.drive(50,30)
-    else:robot.drive(50,-30)
+    break
 
 #RGB変換
 # RGB値を取得して変換
