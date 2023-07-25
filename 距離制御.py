@@ -20,7 +20,7 @@ ev3 = EV3Brick()
 ev3.speaker.beep()
 
 #インスタンスの作成
-color = ColorSensor(Port.S1)
+color = ColorSensor(Port.S2)
 
 left_motor = Motor(Port.B)
 right_motor = Motor(Port.C)
