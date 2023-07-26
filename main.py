@@ -41,10 +41,62 @@ for i in range(3):
     ev3.screen.print(color.reflection())
     if color.reflection() < 13:
         robot.drive_time(200,10,500)
-        robot.drive(200,0)
+        while color.reflection() >= 13:
+            robot.drive(200,0)
     else:
         robot.drive_time(200,-10,500)
-        robot.drive(200,0)
+        while color.reflection() < 13:
+            robot.drive(200,0)
 
+robot.drive_time(0,90,500)
 
+for i in range(5):
+    ev3.screen.print(color.reflection())
+    if color.reflection() < 13:
+        robot.drive_time(200,10,500)
+        while color.reflection() >= 13:
+            robot.drive(200,0)
+    else:
+        robot.drive_time(200,-10,500)
+        while color.reflection() < 13:
+            robot.drive(200,0)
 
+robot.drive_time(0,-90,500)
+
+for i in range(2):
+    ev3.screen.print(color.reflection())
+    if color.reflection() < 13:
+        robot.drive_time(200,10,500)
+        while color.reflection() >= 13:
+            robot.drive(200,0)
+    else:
+        robot.drive_time(200,-10,500)
+        while color.reflection() < 13:
+            robot.drive(200,0)
+
+robot.drive_time(0,180,500)
+
+for i in range(2):
+    ev3.screen.print(color.reflection())
+    if color.reflection() < 13:
+        robot.drive_time(200,10,500)
+        while color.reflection() >= 13:
+            robot.drive(200,0)
+    else:
+        robot.drive_time(200,-10,500)
+        while color.reflection() < 13:
+            robot.drive(200,0)
+
+robot.drive_time(0,90,500)
+
+for i in range(5):
+    ev3.screen.print(color.reflection())
+    if color.reflection() < 13:
+        robot.drive_time(200,10,500)
+        while color.reflection() >= 13:
+            robot.drive(200,0)
+    else:
+        robot.drive_time(200,-10,500)
+        while color.reflection() < 13:
+            robot.drive(200,0)
+            
