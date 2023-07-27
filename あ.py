@@ -37,22 +37,30 @@ a = 0
 b = 12
 
 robot.drive_time(200,0,500)
-if color.reflection() < b:
-    a = a + 1
+robot.drive_time(0,180,500)
 
 while a < 2:
-    robot.drive(200,90)
+    if color.reflection() < b:
+        a = a + 1
+    print(color.reflection())
+    robot.drive(200,0)
     if a : 2
     break
 
-robot.drive_time(200,-90,10000)
+arm.run(-100)
+wait(2000)
 
-arm.run(200)
-wait(1000)
+robot.drive_time(0,-180,500)
+robot.drive_time(200,0,5000)
+
+arm.run(100)
+wait(2000)
 arm.stop()
 
-robot.drive_time(200,180,300)
-robot.drive_time(200,90,5000)
+robot.drive_time(0,360,500)
+robot.drive_time(200,0,5000)
+robot.drive_time(0,180,500)
+robot.drive_time(200,0,5000)
 
-arm.run(200)
+arm.run(-100)
 arm.stop()

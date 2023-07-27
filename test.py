@@ -29,3 +29,5 @@ arm = Motor(Port.A)
 wheel_diameter = 56
 axle_track = 120
 robot = DriveBase(left_motor, right_motor, wheel_diameter, axle_track)
+arm.run(-100)
+wait(2000)
