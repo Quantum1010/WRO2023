@@ -29,30 +29,3 @@ arm = Motor(Port.A)
 wheel_diameter = 56
 axle_track = 120
 robot = DriveBase(left_motor, right_motor, wheel_diameter, axle_track)
-
-#drive_timeの後の括弧はスピード(mm/s),ハンドルの角度？(deg/s),速度(ミリ秒つまり秒数×1000)
-
-#初期設定的なやつ
-a = 0
-b = 12
-
-robot.drive_time(200,0,500)
-if color.reflection() < b:
-    a = a + 1
-
-while a < 2:
-    robot.drive(200,90)
-    if a : 2
-    break
-
-robot.drive_time(200,-90,10000)
-
-arm.run(200)
-wait(1000)
-arm.stop()
-
-robot.drive_time(200,180,300)
-robot.drive_time(200,90,5000)
-
-arm.run(200)
-arm.stop()
