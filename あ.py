@@ -66,3 +66,6 @@ robot.drive_time(0,90,1000)
 robot.drive_time(200,0,5000)
 
 arm.run(-100)
+wait(2000)
+
+robot.drive_time(-200,0,1000)
