@@ -34,7 +34,6 @@ robot = DriveBase(left_motor, right_motor, wheel_diameter, axle_track)
 
 #初期設定的なやつ
 a = 0
-b = 12
 
 robot.drive_time(200,0,1000)
 robot.drive_time(0,97,1000)
