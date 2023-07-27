@@ -15,7 +15,20 @@ from pybricks.media.ev3dev import SoundFile, ImageFile
 # Create your objects here.
 ev3 = EV3Brick()
 color_sensor=ColorSensor(Port.S2)
+left_motor = Motor(Port.B)
+right_motor = Motor(Port.C)
+arm = Motor(Port.A)
+
+#詳細
+wheel_diameter = 56
+axle_track = 120
+robot = DriveBase(left_motor, right_motor, wheel_diameter, axle_track)
 
 # Write your program here.
+# RGB値を取得して変換
+rgb_val = color_sensor.rgb()
+red, green, blue = rgb_val[0], rgb_val[1], rgb_val[2]
+
 while True:
-    ev3.screen.print(color_sensor.reflection())
+    robot.drive(100,0)
+    print(color_sensor.color())

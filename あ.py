@@ -36,31 +36,33 @@ robot = DriveBase(left_motor, right_motor, wheel_diameter, axle_track)
 a = 0
 b = 12
 
-robot.drive_time(200,0,500)
-robot.drive_time(0,180,500)
+robot.drive_time(200,0,1000)
+robot.drive_time(0,97,1000)
 
 while a < 2:
-    if color.reflection() < b:
-        a = a + 1
-    print(color.reflection())
+    print(a)
     robot.drive(200,0)
-    if a : 2
-    break
-
+    if color.color() == Color.BLACK:
+        ev3.speaker.beep()
+        a = a + 1
+        while not color.color() == Color.BLACK:
+            pass
+    if a == 2:
+        break
+robot.stop()
 arm.run(-100)
 wait(2000)
 
-robot.drive_time(0,-180,500)
-robot.drive_time(200,0,5000)
+robot.drive_time(0,-90,1000)
+robot.drive_time(200,0,3000)
 
 arm.run(100)
 wait(2000)
 arm.stop()
 
-robot.drive_time(0,360,500)
-robot.drive_time(200,0,5000)
-robot.drive_time(0,180,500)
+robot.drive_time(0,183,1000)
+robot.drive_time(200,0,1000)
+robot.drive_time(0,90,1000)
 robot.drive_time(200,0,5000)
 
 arm.run(-100)
-arm.stop()
