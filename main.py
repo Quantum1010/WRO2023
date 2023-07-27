@@ -23,7 +23,7 @@ color = ColorSensor(Port.S2)
 
 left_motor = Motor(Port.B)
 right_motor = Motor(Port.C)
-#arm = Motor(Port.A)
+arm = Motor(Port.A)
 
 #詳細
 wheel_diameter = 56
@@ -32,11 +32,26 @@ robot = DriveBase(left_motor, right_motor, wheel_diameter, axle_track)
 
 #drive_timeの後の括弧はスピード(mm/s),ハンドルの角度？(deg/s),速度(ミリ秒つまり秒数×1000)
 
-#ライントレースのプログラム
-if color.reflection() < 13:
-    robot.drive_time(200,5,500)
-else:robot.drive_time(200,-5,500)
+#初期設定的なやつ
+robot.drive_time(200,0,500)
+while color.reflection() >= 12:
+    robot.drive(200,0)
+if color.reflection() < 12:
+    robot.drive_time(0,90,500)
 
+#白ブロック前の角まで
+for i in range(5):
+    ev3.screen.print(color.reflection())
+    if color.reflection() < 12:
+        robot.drive_time(0,-10,300)
+        while color.reflection() >= 12:
+            robot.drive(200,0)
+    else:
+        robot.drive_time(0,10,300)
+        while color.reflection() < 12:
+            robot.drive(200,0)
+
+#白ブロック手前まで
 for i in range(3):
     ev3.screen.print(color.reflection())
     if color.reflection() < 13:
@@ -48,33 +63,8 @@ for i in range(3):
         while color.reflection() < 13:
             robot.drive(200,0)
 
-robot.drive_time(0,90,500)
-
-for i in range(5):
-    ev3.screen.print(color.reflection())
-    if color.reflection() < 13:
-        robot.drive_time(200,10,500)
-        while color.reflection() >= 13:
-            robot.drive(200,0)
-    else:
-        robot.drive_time(200,-10,500)
-        while color.reflection() < 13:
-            robot.drive(200,0)
-
-robot.drive_time(0,-90,500)
-
-for i in range(2):
-    ev3.screen.print(color.reflection())
-    if color.reflection() < 13:
-        robot.drive_time(200,10,500)
-        while color.reflection() >= 13:
-            robot.drive(200,0)
-    else:
-        robot.drive_time(200,-10,500)
-        while color.reflection() < 13:
-            robot.drive(200,0)
-
 robot.drive_time(0,180,500)
+arm.run_angle()
 
 for i in range(2):
     ev3.screen.print(color.reflection())
