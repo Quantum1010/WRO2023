@@ -34,11 +34,14 @@ robot = DriveBase(left_motor, right_motor, wheel_diameter, axle_track)
 
 #初期設定的なやつ
 a = 0
+b = 0
+rdeg = 90
+ldeg = -90
 
 robot.drive_time(200,0,1000)
-robot.drive_time(0,97,1000)
+robot.drive_time(0,rdeg,1000)
 
-while a < 2:
+while a < 3:
     print(a)
     robot.drive(200,0)
     if color.color() == Color.BLACK:
@@ -46,25 +49,47 @@ while a < 2:
         a = a + 1
         while not color.color() == Color.BLACK:
             pass
-    if a == 2:
+    if a == 3:
         break
 robot.stop()
 arm.run(-100)
-wait(2000)
+wait(800)
 
-robot.drive_time(0,-90,1000)
+robot.drive_time(0,ldeg,1000)
 robot.drive_time(200,0,3000)
 
 arm.run(100)
 wait(2000)
 arm.stop()
 
-robot.drive_time(0,183,1000)
+robot.drive_time(0,rdeg*2,1000)
 robot.drive_time(200,0,1000)
-robot.drive_time(0,90,1000)
+robot.drive_time(0,rdeg,1000)
 robot.drive_time(200,0,5000)
 
 arm.run(-100)
 wait(2000)
 
 robot.drive_time(-200,0,1000)
+
+#ここから先は本番無理そうだったら消す
+robot.drive_time(0,ldeg,1000)
+robot.drive_time(200,0,1000)
+robot.drive_time(0,ldeg,1000)
+
+while b < 3:
+    print(b)
+    robot.drive(200,0)
+    if color.color() == Color.BLACK:
+        ev3.speaker.beep()
+        b = b + 1
+        while not color.color() == Color.BLACK:
+            pass
+    if b == 3:
+        break
+robot.stop()
+
+robot.drive_time(0,-75,1000)
+robot.drive_time(200,0,2500)
+
+robot.stop()
